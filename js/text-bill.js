@@ -51,6 +51,16 @@ addBtn.addEventListener('click', function(){
         document.querySelector('.totalOne').innerHTML = updatedGlobalTotal;
         //Clear the input field
         billTypeElement.value = '';
+        //Total over R30
+        if(parseFloat(globalTotal.innerHTML) > 30){
+            globalTotal.classList.add('warning');
+        }
+        //Total over 50
+        if(parseFloat(globalTotal.innerHTML) > 50){
+            globalTotal.classList.remove('warning');
+            globalTotal.classList.add('danger');
+        }
+       
     } else if(billTypeElement.value == 'sms'){
         //Additional cost for each call
         additionalCost = 0.75;
@@ -68,6 +78,15 @@ addBtn.addEventListener('click', function(){
         document.querySelector('.totalOne').innerHTML = updatedGlobalTotal;
         //Clear the input field
         billTypeElement.value = '';
+        //Total over R30
+        if(parseFloat(globalTotal.innerHTML) > 30){
+            globalTotal.classList.add('warning');
+        }
+        //Total over 50
+        if(parseFloat(globalTotal.innerHTML) > 50){
+            globalTotal.classList.remove('warning');
+            globalTotal.classList.add('danger');
+        }
     }
 });
 
