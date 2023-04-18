@@ -79,6 +79,7 @@ addBtn.addEventListener('click', function(){
         //Clear the input field
         billTypeElement.value = '';
         //Total over R30
+        console.log(globalTotal);
         if(parseFloat(globalTotal.innerHTML) > 30){
             globalTotal.classList.add('warning');
         }

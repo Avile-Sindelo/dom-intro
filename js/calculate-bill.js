@@ -28,6 +28,22 @@ function calculateBtnClicked(){
     //  * once done looping over all the entries - display the total onto the screen in the billTotal element
     let roundedBillTotal = billTotal.toFixed(2);
     billTotalElement.innerHTML = roundedBillTotal;
+
+    if(parseFloat(roundedBillTotal) > 20){
+        //warning
+        billTotalElement.classList.add('warning');
+        //Style the Rands sign
+        document.querySelector('.total').classList.add('warning');
+    }
+    //Danger
+    if(parseFloat(roundedBillTotal) > 30){
+        //danger
+        billTotalElement.classList.add('danger');
+        //Style the Rands sign 
+        document.querySelector('.total').classList.add('danger');
+    }
+
+    //Clear the input field
 }
 
 //link the function to a click event on the calculate button
