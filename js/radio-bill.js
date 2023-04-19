@@ -34,7 +34,7 @@ const callTotalElement = document.querySelector('.callTotalTwo');
 
 //Get reference to the SMS total element
 const smsTotalElement = document.querySelector('.smsTotalTwo');
-console.log(smsTotalElement.innerHTML);
+
 //Get reference to the gloabal total element
 const globalTotalElement = document.querySelector('.totalTwo');
 
@@ -71,7 +71,4 @@ addButton.addEventListener('click', function(){
      }
 });
 
-//in the event listener get the value from the billItemTypeRadio radio buttons
-// * add the appropriate value to the running total
-// * add nothing for invalid values that is not 'call' or 'sms'.
-// * display the latest total on the screen
+

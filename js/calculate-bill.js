@@ -44,8 +44,6 @@ function calculateBtnClicked(){
         document.querySelector('.total').classList.add('danger');
     }
 
-    //Clear the input field
-    billStringElement.value = '';
 }
 
 //link the function to a click event on the calculate button
