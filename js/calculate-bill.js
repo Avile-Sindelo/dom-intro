@@ -29,13 +29,14 @@ function calculateBtnClicked(){
     let roundedBillTotal = billTotal.toFixed(2);
     billTotalElement.innerHTML = roundedBillTotal;
 
+    //Warning style
     if(parseFloat(roundedBillTotal) > 20){
         //warning
         billTotalElement.classList.add('warning');
         //Style the Rands sign
         document.querySelector('.total').classList.add('warning');
     }
-    //Danger
+    //Danger style
     if(parseFloat(roundedBillTotal) > 30){
         //danger
         billTotalElement.classList.add('danger');
@@ -44,6 +45,8 @@ function calculateBtnClicked(){
     }
 
     //Clear the input field
+    // let andiyaz = billStringElement
+    // console.log(andiyaz);
 }
 
 //link the function to a click event on the calculate button
