@@ -45,8 +45,7 @@ function calculateBtnClicked(){
     }
 
     //Clear the input field
-    // let andiyaz = billStringElement
-    // console.log(andiyaz);
+    billStringElement.value = '';
 }
 
 //link the function to a click event on the calculate button
