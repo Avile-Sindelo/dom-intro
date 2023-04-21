@@ -13,7 +13,7 @@ function calculateBtnClicked(){
     const billItems = billString.split(",");
     // a variable for the total phone bill.
     let billTotal = 0;
-    //  * loop over all the entries in the the resulting list
+    //  * loop over all the entries in the resulting list
     for (let i = 0; i < billItems.length; i++){
         //  * check if it is a call or an sms and add the right amount to the overall total
         let billItem = billItems[i].trim();

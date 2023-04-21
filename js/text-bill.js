@@ -10,14 +10,12 @@
  *          Display the new call total on the element
  *      5.2. Get reference to the Global total element AND add the new additional costs to the global total
  *          Display the new global total on the UI
- *          Clear the text field
  * 
  *  6. If the input is an SMS
  *      6.1. Get the reference to the SMS total element AND add the new additional cost to the SMS total
  *          Display the new SMS total on element
  *      6.2. Get reference to the Global total element AND add the new additional costs to the global total
  *          Display the new global total on the UI
- *          Clear the text box
  * 
  * ********* THE END ************
  */

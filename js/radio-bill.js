@@ -9,13 +9,11 @@
          Update the call total
          Update the global total
          Display the totals on the UI
-         Un-check the call radio
 
     7. If the sms radio button is checked
          Update the sms total
          Update the global total
          Display the totals on the UI
-         Un-check the sms radio
 
  8. Add the WARNING and DANGER classes as the limits allow
 
