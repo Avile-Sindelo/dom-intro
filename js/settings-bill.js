@@ -67,7 +67,6 @@ const smsCost = document.querySelector('.smsCostSetting');
 //get a reference to the warning level input
 const warningLevel = document.querySelector('.warningLevelSetting');
 
-
 //get a reference to the warning level input
 const criticalLevel = document.querySelector('.criticalLevelSetting');
 
@@ -131,9 +130,17 @@ if(globalTotal > parseFloat(criticalLevel.value)){
 }
 
 });
-//in the event listener get the value from the billItemTypeRadio radio buttons
-// * add the appropriate value to the call / sms total
-// * add the appropriate value to the overall total
-// * add nothing for invalid values that is not 'call' or 'sms'.
-// * display the latest total on the screen.
-// * check the value thresholds and display the total value in the right color.
+
+//              UDPATE SETTINGS
+
+updateBtn.addEventListener('click', ()=>{
+    //update the warning level and critical level
+    if(parseFloat(warningLevel.value) > globalTotal  && parseFloat(criticalLevel.value) > parseFloat(warningLevel.value)){
+        //Remove the class
+        globalTotalSettings.classList.remove('warning');
+        globalTotalSettings.classList.remove('danger');
+        //Restore ADD button functionality
+        btnAdd.disabled = false;
+    }
+    
+});

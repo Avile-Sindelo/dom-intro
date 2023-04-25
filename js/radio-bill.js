@@ -38,22 +38,31 @@ const globalTotalElement = document.querySelector('.totalTwo');
 
 //create a variable that will keep track of the total bill
 let additionalBill = 0;
+let callTotalCost = 0;
+let smsTotalCost = 0;
+let globalTotalCost = 0;
 //add an event listener for when the add button is pressed
 addButton.addEventListener('click', function(){
     if(callRadio.checked){
           //The additional bill for each call 
           additionalBill = 2.75;
           //Update the call total
-          callTotalElement.innerHTML = parseFloat(callTotalElement.innerHTML) + additionalBill;
+          callTotalCost = parseFloat(callTotalElement.innerHTML) + additionalBill;
+          callTotalElement.innerHTML = callTotalCost.toFixed(2); 
+          
           //Update the global total
-          globalTotalElement.innerHTML = parseFloat(globalTotalElement.innerHTML) + additionalBill;
+          globalTotalCost = parseFloat(globalTotalElement.innerHTML) + additionalBill;
+          globalTotalElement.innerHTML = globalTotalCost.toFixed(2); 
     } else if(smsRadio.checked){ 
           //The additional bill for each SMS
           additionalBill = 0.75;
           //Update the SMS total
-          smsTotalElement.innerHTML = parseFloat(smsTotalElement.innerHTML) + additionalBill;
-          //Update the Global total
-          globalTotalElement.innerHTML = parseFloat(globalTotalElement.innerHTML) + additionalBill;
+          
+          smsTotalCost = parseFloat(smsTotalElement.innerHTML) + additionalBill;
+          smsTotalElement.innerHTML = smsTotalCost.toFixed(2); 
+          //Update the global total
+          globalTotalCost = parseFloat(globalTotalElement.innerHTML) + additionalBill;
+          globalTotalElement.innerHTML = globalTotalCost.toFixed(2);
      }
 
      //Warning styles

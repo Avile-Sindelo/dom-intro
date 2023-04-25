@@ -40,13 +40,13 @@ addBtn.addEventListener('click', function(){
         //Convert the string total into a floating point number and add the additional cost
         let updatedCallTotal = parseFloat(callTotal.innerHTML) + additionalCost;
         //Display the updated total on the CALLS total
-        document.querySelector('.callTotalOne').innerHTML = updatedCallTotal;
+        document.querySelector('.callTotalOne').innerHTML = updatedCallTotal.toFixed(2);
         //Get reference to the global total element
         const globalTotal = document.querySelector('.totalOne');
         //Convert the string value of the global total and add to it the additional cost
         let updatedGlobalTotal = parseFloat(globalTotal.innerHTML) + additionalCost;
         //Display the updated Global total
-        document.querySelector('.totalOne').innerHTML = updatedGlobalTotal;
+        document.querySelector('.totalOne').innerHTML = updatedGlobalTotal.toFixed(2);
         //Total over R30
         if(parseFloat(globalTotal.innerHTML) > 30){
             globalTotal.classList.add('warning');
@@ -65,15 +65,14 @@ addBtn.addEventListener('click', function(){
         //Convert the string total into a floating point number and add the additional cost
         let updatedSmsTotal = parseFloat(smsTotal.innerHTML) + additionalCost;
         //Display the updated total on the CALLS total
-        document.querySelector('.smsTotalOne').innerHTML = updatedSmsTotal;
+        document.querySelector('.smsTotalOne').innerHTML = updatedSmsTotal.toFixed(2);
         //Get reference to the global total element
         const globalTotal = document.querySelector('.totalOne');
         //Convert the string value of the global total and add to it the additional cost
         let updatedGlobalTotal = parseFloat(globalTotal.innerHTML) + additionalCost;
         //Display the updated Global total
-        document.querySelector('.totalOne').innerHTML = updatedGlobalTotal;
+        document.querySelector('.totalOne').innerHTML = updatedGlobalTotal.toFixed(2);
         //Total over R30
-        console.log(globalTotal);
         if(parseFloat(globalTotal.innerHTML) > 30){
             globalTotal.classList.add('warning');
         }
