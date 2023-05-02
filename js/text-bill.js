@@ -32,7 +32,7 @@ let additionalCost = 0;
 
 //add an event listener for when the add button is pressed
 addBtn.addEventListener('click', function(){
-    if(billTypeElement.value == 'call'){
+    if(billTypeElement.value == 'call' || billTypeElement.value == 'CALL' || billTypeElement.value == 'Call'){
         //Additional cost for each call
         additionalCost = 2.75;
         //Get reference to the CALLS total 
@@ -57,7 +57,7 @@ addBtn.addEventListener('click', function(){
             globalTotal.classList.add('danger');
         }
        
-    } else if(billTypeElement.value == 'sms'){
+    } else if(billTypeElement.value == 'sms' || billTypeElement.value == 'SMS' || billTypeElement.value == 'Sms'){
         //Additional cost for each call
         additionalCost = 0.75;
         //Get reference to the SMS total 
