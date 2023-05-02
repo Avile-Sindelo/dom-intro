@@ -135,7 +135,7 @@ if(globalTotal > parseFloat(criticalLevel.value)){
 
 updateBtn.addEventListener('click', ()=>{
     //update the warning level and critical level
-    if(parseFloat(warningLevel.value) > globalTotal  && parseFloat(criticalLevel.value) > parseFloat(warningLevel.value)){
+    if(parseFloat(criticalLevel.value) > globalTotal && parseFloat(warningLevel.value) < parseFloat(criticalLevel.value)){
         //Remove the class
         globalTotalSettings.classList.remove('warning');
         globalTotalSettings.classList.remove('danger');

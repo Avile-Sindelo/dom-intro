@@ -9,7 +9,7 @@ const billStringElement = document.querySelector('.billString');
 function calculateBtnClicked(){
     //  * this function should read the string value entered - split it on a comma.
     const billString = billStringElement.value;
-    //split the string
+    //Make a list of bill items using from the string
     const billItems = billString.split(",");
     // a variable for the total phone bill.
     let billTotal = 0;
@@ -17,10 +17,10 @@ function calculateBtnClicked(){
     for (let i = 0; i < billItems.length; i++){
         //  * check if it is a call or an sms and add the right amount to the overall total
         let billItem = billItems[i].trim();
-        if (billItem === "call"){
+        if (billItem === "call" || billItem === "CALL"){
             billTotal += 2.75;
         }
-        else if (billItem === "sms"){
+        else if (billItem === "sms" || billItem === "SMS"){
             billTotal += 0.75;
         }
     }
@@ -28,24 +28,38 @@ function calculateBtnClicked(){
     //  * once done looping over all the entries - display the total onto the screen in the billTotal element
     let roundedBillTotal = billTotal.toFixed(2);
     billTotalElement.innerHTML = roundedBillTotal;
-
-    //Warning style
-    if(parseFloat(roundedBillTotal) > 20){
-        //warning
-        billTotalElement.classList.add('warning');
-        //Style the Rands sign
-        document.querySelector('.total').classList.add('warning');
+    
+    //Normal style for total less than or equal to R20
+    if(parseFloat(roundedBillTotal) <= 20){
+        //Remove the warning class
+        billTotalElement.classList.replace('warning', 'normal');
+        //Remove the Danger class
+        billTotalElement.classList.remove('danger');
+        document.querySelector('.total').classList.replace('warning', 'normal');
+        console.log('The text should be black at this point, the total is less than 20');
     }
+
+    // //Warning level style
+    if(parseFloat(roundedBillTotal) > 20){
+        billTotalElement.classList.remove('danger');
+        billTotalElement.classList.remove('normal')
+        billTotalElement.classList.add('warning');
+       
+        //Remove the danger class from the Rand sign
+        //document.querySelector('.total').classList.replace('danger', 'warning');
+    } 
     //Danger style
     if(parseFloat(roundedBillTotal) > 30){
         //danger
+        billTotalElement.classList.remove('warning');
         billTotalElement.classList.add('danger');
-        //Style the Rands sign 
-        document.querySelector('.total').classList.add('danger');
+
     }
+
 
 }
 
 //link the function to a click event on the calculate button
 
 calculateButton.addEventListener('click', calculateBtnClicked);
+
