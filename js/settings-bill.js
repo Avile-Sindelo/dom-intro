@@ -42,6 +42,7 @@
  */
 
 
+//              start of DOM
 //              BUTTONS
 // get a reference to the call radio button
 const callRadioElement = document.querySelector('#call-radio');
@@ -74,59 +75,43 @@ const criticalLevel = document.querySelector('.criticalLevelSetting');
 //get a reference to the Update button
 const updateBtn = document.querySelector('.updateSettings');
 
+            // End of DOM
 
-// create a variable that will keep track of the additional cost
-let newAdditionalCost = 0;
-let totalCost = 0;
-let globalTotal = 0;
-
-//add an event listener for when the 'Update settings' button is pressed
+const instance = BillWithSettings();
+instance.setCallCost(3);
+instance.setSmsCost(1);
+instance.setWarningLevel(10);
+instance.setCriticalLevel(20);
 
 //add an event listener for when the add button is pressed
 btnAdd.addEventListener('click', ()=>{
     //if the call radio button is checked;
     if(callRadioElement.checked){
-        //Make the entered call cost the additional cost
-        newAdditionalCost = callCost.value;
-        
-        //Convert the call total and the additional cost to numbers, sum them up and make that the call total 
-        totalCost = parseFloat(callTotalSettings.innerHTML) + parseFloat(newAdditionalCost);
-       
-        //Convert the global total and the additional cost to numbers, sum them up and assign their sum to the global cost variable
-        globalTotal =  parseFloat(globalTotalSettings.innerHTML) + parseFloat(newAdditionalCost);
-       
-        //Display the Call total
-        callTotalSettings.innerHTML = totalCost.toFixed(2);
-        //Display the Global total
-        globalTotalSettings.innerHTML = globalTotal.toFixed(2);
+        // //Display the Global total
+        instance.makeCall();
+        callTotalSettings.innerHTML = instance.getTotalCallCost().toFixed(2);
+        globalTotalSettings.innerHTML = instance.getGrandTotal().toFixed(2);
 
     } else if(smsRadioElement.checked){
-        //Make the entered sms cost the additional cost
-        newAdditionalCost = smsCost.value;
-        //Convert the sms total and the additional cost to numbers, sum them up and make that the call total 
-        totalCost = parseFloat(smsTotalSettings.innerHTML) + parseFloat(newAdditionalCost);
-
-        //Convert the global total and the additional cost to numbers, sum them up and assign their sum to the global cost variable
-        globalTotal =  parseFloat(globalTotalSettings.innerHTML) + parseFloat(newAdditionalCost);
         
         //Display the Sms total
-        smsTotalSettings.innerHTML = totalCost.toFixed(2);
+        instance.sendSms();
+        smsTotalSettings.innerHTML = instance.getTotalSmsCost().toFixed(2);
         //Display the Global total
-        globalTotalSettings.innerHTML = globalTotal.toFixed(2);
+        globalTotalSettings.innerHTML = instance.getGrandTotal().toFixed(2);
     }
 
 //              WARNING LEVEL
-    if(globalTotal > parseFloat(warningLevel.value)){
+    if(instance.getGrandTotal() >= instance.getWarningLevel()){
         //Add the Warning class
-        globalTotalSettings.classList.add('warning');
+        globalTotalSettings.classList.add(instance.getClassName());
     }
 
 //              CRITICAL LEVEL
-if(globalTotal > parseFloat(criticalLevel.value)){
+if(instance.getGrandTotal() >= instance.getCriticalLevel()){
     //Add the Danger class
-    globalTotalSettings.classList.add('danger');
-    //disable the ADD button
-    btnAdd.disabled = true;
+    globalTotalSettings.classList.add(instance.getClassName());
+    
 }
 
 });
@@ -135,12 +120,31 @@ if(globalTotal > parseFloat(criticalLevel.value)){
 
 updateBtn.addEventListener('click', ()=>{
     //update the warning level and critical level
-    if(parseFloat(criticalLevel.value) > globalTotal && parseFloat(warningLevel.value) < parseFloat(criticalLevel.value)){
-        //Remove the class
-        globalTotalSettings.classList.remove('warning');
-        globalTotalSettings.classList.remove('danger');
-        //Restore ADD button functionality
-        btnAdd.disabled = false;
+    if(parseFloat(criticalLevel.value) > instance.getGrandTotal()){        
+        
+        if(instance.getGrandTotal() >= parseFloat(warningLevel.value)){
+            //Make sure the Danger class is removed
+            globalTotalSettings.classList.remove('danger');
+            //Add the Warning class in this range
+            globalTotalSettings.classList.add('warning');
+        } else {
+            //Remove the classes
+            globalTotalSettings.classList.remove('warning');
+            globalTotalSettings.classList.remove('danger');
+        }
+
+        instance.setCriticalLevel(parseFloat(criticalLevel.value));
+        
+        //Update the call cost if a new value has been provided
+        if(callCost.value){
+            instance.setCallCost(parseFloat(callCost.value));
+        }
+
+        //Update the sms cost if a new value has been provided
+        if(smsCost.value){
+            instance.setSmsCost(parseFloat(smsCost.value));
+        }
+
     }
     
 });

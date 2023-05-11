@@ -36,7 +36,6 @@ function calculateBtnClicked(){
         //Remove the Danger class
         billTotalElement.classList.remove('danger');
         document.querySelector('.total').classList.replace('warning', 'normal');
-        console.log('The text should be black at this point, the total is less than 20');
     }
 
     // //Warning level style
@@ -45,8 +44,6 @@ function calculateBtnClicked(){
         billTotalElement.classList.remove('normal')
         billTotalElement.classList.add('warning');
        
-        //Remove the danger class from the Rand sign
-        //document.querySelector('.total').classList.replace('danger', 'warning');
     } 
     //Danger style
     if(parseFloat(roundedBillTotal) > 30){
@@ -55,8 +52,6 @@ function calculateBtnClicked(){
         billTotalElement.classList.add('danger');
 
     }
-
-
 }
 
 //link the function to a click event on the calculate button
