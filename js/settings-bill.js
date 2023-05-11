@@ -116,7 +116,7 @@ if(instance.getGrandTotal() >= instance.getCriticalLevel()){
 
 });
 
-//              UDPATE SETTINGS
+//             UDPATE SETTINGS
 
 updateBtn.addEventListener('click', ()=>{
     //update the warning level and critical level
